@@ -3,7 +3,7 @@
 
  The actual RottenPotatoes starter app you will use is in another
  public repo:
- [saasbook/rottenpotatoes-rails-intro](https://github.com/saasbook/rottenpotatoes-rails-intro).
+ [jultra/rottenpotatoes-rails-intro](https://github.com/jultra/rottenpotatoes-rails-intro).
  On that repo's GitHub page, click "Use This Template", which will
  create a new copy of the repo in your GitHub account.  **Do not fork
  the repo** since we don't intend to accept pull requests from student assignments!
