@@ -42,6 +42,32 @@ safe to substitute `bin/rake` or `bin/rails`, especially if the
 commands aren't behaving the way we say they should.
 
 
+**Error when running `rake db:migrate`**
+```
+/xxxxx/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/activesupport-4.2.11/lib/active_support/core_ext/object/duplicable.rb:111: warning: BigDecimal.new is deprecated; use BigDecimal() method instead.
+rake aborted!
+Gem::LoadError: Specified 'sqlite3' for database adapter, but the gem is not loaded. Add `gem 'sqlite3'` to your Gemfile (and ensure its version is at the minimum required by ActiveRecord).
+
+
+Caused by:
+Gem::LoadError: can't activate sqlite3 (~> 1.3.6), already activated sqlite3-1.4.2. Make sure all dependencies are added to Gemfile.
+
+Tasks: TOP => db:migrate => db:load_config
+(See full trace by running task with --trace)
+```
+
+**Note:** If you get the following error when running `db:migrate`, edit your Gemfile, and set the version of the sqlite gem to, '1.3.13'. 
+
+```
+gem 'sqlite3', '1.3.13'
+```
+
+Or you can also uninstall the version of sqlite3 that is causing the error. In the above example, it's sqlite3 version 1.4.2 as follows:
+
+```
+gem uninstall sqlite3 --version 1.4.2
+```
+
 <details>
   <summary><strong>Self Check Question:</strong> How does Rails decide where and how to create the development database? (Hint: check the <code>db</code> and <code>config</code> subdirectories)</summary>
   <p><blockquote>The <code>rake db:migrate</code> command creates a local development database (following the specifications in <code>config/database.yml</code>) and runs the migrations in <code>db/migrate</code> to create the app's schema.  It also creates/updates the file <code>db/schema.rb</code> to reflect the latest database schema.  <strong>Note: it's important to keep this file under version control.</strong> </blockquote></p>
